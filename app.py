@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, session
 from collections import defaultdict
 import firebase_admin
+from firebase_admin import credentials, initialize_app, firestore
 from firebase_admin import credentials, firestore, auth
 import requests
 import os

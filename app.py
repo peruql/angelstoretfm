@@ -27,9 +27,11 @@ firebase_config = {
     "universe_domain": "googleapis.com"
 }
 
-# Initialize Firebase
 cred = credentials.Certificate(firebase_config)
-db = firebase_admin.initialize_app(cred)
+firebase_app = firebase_admin.initialize_app(cred)
+
+# Get a reference to the Firestore database
+db = firestore.client()
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = os.urandom(24)  # Generate a random secret key

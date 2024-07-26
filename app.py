@@ -29,14 +29,7 @@ def initialize_firebase():
     return firestore.client()
 
 db = initialize_firebase()
-Remember, it's crucial to keep these credentials secure. Make sure your repository is private and never commit these environment variables to version control.
 
-Copy
-Retry
-
-
-Claude does not have the ability to run the code it generates yet.
-Claude can make mistakes. Please double-check responses.
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = os.urandom(24)  # Generate a random secret key

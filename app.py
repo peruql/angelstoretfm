@@ -14,7 +14,7 @@ import random
 MAX_ADMINS = 5  # Adjust this number to change the maximum number of admins allowed
 def initialize_firebase():
     firebase_config = {
-        "type": os.environ.get("FIREBASE_TYPE"),
+        "type": os.environ.get("TYPE"),
         "project_id": os.environ.get("FIREBASE_PROJECT_ID"),
         "private_key_id": os.environ.get("FIREBASE_PRIVATE_KEY_ID"),
         "private_key": os.environ.get("FIREBASE_PRIVATE_KEY").replace("\\n", "\n"),

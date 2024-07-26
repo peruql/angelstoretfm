@@ -46,7 +46,7 @@ def login_required(f):
     return decorated_function
 @app.route('/')
 def index():
-    accounts_ref = db.collection('accounts')
+    accounts_ref = db.collection('users')
     docs = accounts_ref.get()
     
     grouped_accounts = defaultdict(int)

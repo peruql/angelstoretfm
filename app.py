@@ -11,12 +11,15 @@ import string
 import random
 
 MAX_ADMINS = 5  # Adjust this number to change the maximum number of admins allowed
+
 def initialize_firebase():
+    # Create a Firebase configuration dictionary from environment variables
     firebase_config = {
         "type": os.environ.get("FIREBASE_TYPE"),
         "project_id": os.environ.get("FIREBASE_PROJECT_ID"),
         "private_key_id": os.environ.get("FIREBASE_PRIVATE_KEY_ID"),
-        "private_key": os.environ.get("FIREBASE_PRIVATE_KEY"),
+        # Replace the escaped newline characters with actual newlines for the private key
+        "private_key": os.environ.get("FIREBASE_PRIVATE_KEY").replace('\\n', '\n'),
         "client_email": os.environ.get("FIREBASE_CLIENT_EMAIL"),
         "client_id": os.environ.get("FIREBASE_CLIENT_ID"),
         "auth_uri": os.environ.get("FIREBASE_AUTH_URI"),
@@ -24,12 +27,16 @@ def initialize_firebase():
         "auth_provider_x509_cert_url": os.environ.get("FIREBASE_AUTH_PROVIDER_X509_CERT_URL"),
         "client_x509_cert_url": os.environ.get("FIREBASE_CLIENT_X509_CERT_URL")
     }
+
+    # Initialize the Firebase app with the credentials
     cred = credentials.Certificate(firebase_config)
     initialize_app(cred)
+    
+    # Return the Firestore client
     return firestore.client()
 
+# Usage
 db = initialize_firebase()
-
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = os.urandom(24)  # Generate a random secret key

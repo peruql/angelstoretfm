@@ -11,9 +11,32 @@ import string
 import random
 
 MAX_ADMINS = 5  # Adjust this number to change the maximum number of admins allowed
-cred = credentials.Certificate("firebase.json")
-firebase_admin.initialize_app(cred)
-db = firestore.client()
+def initialize_firebase():
+    firebase_config = {
+        "type": os.environ.get("FIREBASE_TYPE"),
+        "project_id": os.environ.get("FIREBASE_PROJECT_ID"),
+        "private_key_id": os.environ.get("FIREBASE_PRIVATE_KEY_ID"),
+        "private_key": os.environ.get("FIREBASE_PRIVATE_KEY").replace('\\n', '\n'),
+        "client_email": os.environ.get("FIREBASE_CLIENT_EMAIL"),
+        "client_id": os.environ.get("FIREBASE_CLIENT_ID"),
+        "auth_uri": os.environ.get("FIREBASE_AUTH_URI"),
+        "token_uri": os.environ.get("FIREBASE_TOKEN_URI"),
+        "auth_provider_x509_cert_url": os.environ.get("FIREBASE_AUTH_PROVIDER_X509_CERT_URL"),
+        "client_x509_cert_url": os.environ.get("FIREBASE_CLIENT_X509_CERT_URL")
+    }
+    cred = credentials.Certificate(firebase_config)
+    initialize_app(cred)
+    return firestore.client()
+
+db = initialize_firebase()
+Remember, it's crucial to keep these credentials secure. Make sure your repository is private and never commit these environment variables to version control.
+
+Copy
+Retry
+
+
+Claude does not have the ability to run the code it generates yet.
+Claude can make mistakes. Please double-check responses.
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = os.urandom(24)  # Generate a random secret key

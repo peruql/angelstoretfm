@@ -16,10 +16,10 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
+app.secret_key = os.urandom(24)  # Generate a random secret key
 
-HCAPTCHA_SECRET = 'ES_718a897463c34034b1a47167cbe80e76'
-HCAPTCHA_SITE_KEY = '473854c0-54fa-4a7c-84c0-4698b686d966'
+HCAPTCHA_SECRET = os.environ.get('HCAPTCHA_SECRET')
+HCAPTCHA_SITE_KEY = os.environ.get('HCAPTCHA_SITE_KEY')
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -422,5 +422,4 @@ def chat_room(room_code):
         return render_template('chat.html', room_code=room_code)
     return "Room not found", 404
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host="0.0.0.0", port=5000)

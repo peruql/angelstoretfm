@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.changeUserType = function(userId) {
         const newType = prompt('Enter new user type (normal/admin):').toLowerCase();
         if (newType === 'normal' || newType === 'admin') {
-            console.log('Changing user type:', userId, newType);
             fetch(`/change_user_type/${userId}`, {
                 method: 'PUT',
                 headers: {
@@ -177,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Server response:', data);
                 if (data.success) {
                     fetchUsers();
                     alert('User type changed successfully!');

@@ -440,6 +440,15 @@ def chat_room(room_code):
     if room:
         return render_template('chat.html', room_code=room_code)
     return "Room not found", 404
+@app.route('/block_user/<user_id>', methods=['PUT'])
+@login_required
+def block_user(user_id):
+    try:
+        user_ref = db.collection('users').document(user_id)
+        user_ref.update({'blocked': True})
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 @app.route('/change_user_type/<user_id>', methods=['PUT'])
 @login_required
 def change_user_type(user_id):
@@ -454,15 +463,5 @@ def change_user_type(user_id):
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
-@app.route('/block_user/<user_id>', methods=['PUT'])
-@login_required
-def block_user(user_id):
-    try:
-        user_ref = db.collection('users').document(user_id)
-        user_ref.update({'blocked': True})
-        return jsonify({'success': True})
-    except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 500
-
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)

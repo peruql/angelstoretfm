@@ -5,57 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Epic Account Emporium</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    {% if enable_captcha %}
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-    {% endif %}
 </head>
-<body class="{{ 'night-mode' if night_mode else '' }}">
+<body>
     <div class="container">
-        <header>
-            <h1>Epic Account Emporium</h1>
-            <nav>
-                <a href="{{ url_for('index') }}">Home</a>
-                <a href="{{ url_for('about') }}">About</a>
-                <a href="{{ url_for('services') }}">Services</a>
-                <a href="{{ url_for('register') }}" class="btn">Register</a>
-            </nav>
-        </header>
-
-        <main>
-            <h2>Login</h2>
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            <form method="POST" action="{{ url_for('login') }}">
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                {% if enable_captcha %}
-                <div class="h-captcha" data-sitekey="{{ hcaptcha_site_key }}"></div>
-                {% endif %}
-                <button type="submit" class="btn">Login</button>
-            </form>
-            <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
-        </main>
+        <h1>Login</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="h-captcha" data-sitekey="{{ hcaptcha_site_key }}"></div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
     </div>
-
-    <div class="mode-switch">
-        <label class="switch">
-            <input type="checkbox" id="modeToggle" {% if night_mode %}checked{% endif %}>
-            <span class="slider"></span>
-        </label>
-    </div>
-
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

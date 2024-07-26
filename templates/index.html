@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Account Emporium</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="{{ 'night-mode' if night_mode else '' }} {{ 'logged-in' if user else '' }}">
+    <div class="container">
+        <header>
+            <div class="user-greeting">
+                {% if user %}
+                    <p>Hello, {{ user.username }}!</p>
+                {% endif %}
+            </div>
+            <h1>Epic Account Emporium</h1>
+            <nav>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('services') }}">Services</a>
+                {% if user %}
+                    <a href="#" id="chatRoomBtn">Chat Rooms</a>
+                    {% if user.user_type == 'admin' %}
+                        <a href="{{ url_for('admin') }}" class="btn admin-btn">Admin Dashboard</a>
+                    {% endif %}
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn">Register</a>
+                {% endif %}
+            </nav>
+        </header>
+        
+        <div class="accounts-grid">
+            {% for (year, account_type), count in accounts %}
+                {% if year in ['2010', '2011', '2012', '2013'] or year == '+accounts' %}
+                    <div class="account-card">
+                        <h2 class="account-year">{{ account_type }}</h2>
+                        <h3 class="account-title">{{ year }}</h3>
+                        <p>{{ count }} Available</p>
+                        <button class="buy-btn" onclick="buyAccount('{{ year }}', '{{ account_type }}')">Buy Now</button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="mode-switch">
+        <label class="switch">
+            <input type="checkbox" id="modeToggle" {% if night_mode %}checked{% endif %}>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <!-- Chat Room Modal -->
+    <div id="chatRoomModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Join Chat Room</h2>
+            <form id="joinRoomForm">
+                <input type="text" id="roomCodeInput" placeholder="Enter Room Code" required>
+                <button type="submit">Join Room</button>
+            </form>
+            <div id="chatRoomList"></div>
+        </div>
+    </div>
+
+    <!-- Chat Interface -->
+    <div id="chatInterface" style="display: none;">
+        <h2 id="roomName"></h2>
+        <div id="chatMessages"></div>
+        <form id="sendMessageForm">
+            <input type="text" id="messageInput" placeholder="Type your message" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>

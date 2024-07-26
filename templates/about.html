@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Epic Account Emporium</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="{{ 'night-mode' if night_mode == 'enabled' else '' }}">
+    <div class="container">
+        <header>
+            <h1>About Us</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('services') }}">Services</a>
+            </nav>
+        </header>
+        
+        <div class="content">
+            <h2>Welcome to Epic Account Emporium</h2>
+            <p>
+                We are your trusted source for high-quality gaming accounts. Our mission is to provide gamers with access to rare and valuable accounts, enhancing their gaming experience.
+            </p>
+            <p>
+                With years of experience in the gaming industry, we understand the value of time and effort invested in building up game accounts. That's why we offer a curated selection of accounts to suit various preferences and playstyles.
+            </p>
+            <p>
+                At Epic Account Emporium, we prioritize security, reliability, and customer satisfaction. Each account is carefully verified to ensure its authenticity and value.
+            </p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

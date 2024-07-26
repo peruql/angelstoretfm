@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='chat_styles.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <h1 id="roomName" class="room-title"></h1>
+        <div id="chatMessages" class="messages-container"></div>
+        <form id="sendMessageForm" class="message-form">
+            <input type="text" id="messageInput" class="message-input" placeholder="Type your message" required>
+            <button type="submit" class="send-button">Send</button>
+        </form>
+        <button id="leaveRoomBtn" class="leave-button">Leave Room</button>
+    </div>
+    <div id="chatRoomList" class="room-list"></div>
+    <script src="{{ url_for('static', filename='chat2.js') }}"></script>
+</body>
+</html>

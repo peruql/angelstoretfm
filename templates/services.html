@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Epic Account Emporium</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="{{ 'night-mode' if night_mode == 'enabled' else '' }}">
+    <div class="container">
+        <header>
+            <h1>Our Services</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+            </nav>
+        </header>
+        
+        <div class="content">
+            <h2>What We Offer</h2>
+            <ul>
+                <li>Verified Gaming Accounts: We provide a wide range of authentic gaming accounts from various years and types.</li>
+                <li>Secure Transactions: Our platform ensures safe and secure purchases for all our customers.</li>
+                <li>Customer Support: Our dedicated team is always ready to assist you with any queries or concerns.</li>
+                <li>Account Customization: Need specific features? We can help you find the perfect account that matches your requirements.</li>
+                <li>Regular Updates: We constantly update our inventory to offer the latest and most sought-after accounts.</li>
+            </ul>
+            <p>
+                Experience the difference with Epic Account Emporium. Your gateway to epic gaming adventures starts here!
+            </p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

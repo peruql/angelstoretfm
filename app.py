@@ -422,4 +422,4 @@ def chat_room(room_code):
         return render_template('chat.html', room_code=room_code)
     return "Room not found", 404
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))

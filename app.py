@@ -14,18 +14,19 @@ import random
 MAX_ADMINS = 5  # Adjust this number to change the maximum number of admins allowed
 
 firebase_config = {
-    "type": "service_account",
-    "project_id": "accou-2f211",
-    "private_key_id": "f8c835b565d452607dfc21e811bbd3ec3e4e2739",
-    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQCfBLCVusubXBc9\n6uCU6NGTqQB0uYKWI2JAagyVzvqKoa0eYPThseEVqyOfGXg1ncjNcAceqv2JSwV6\nJE7nHFx+FNN4gB1L6inGiYX+n1KT1pv3aF27OV9/+lDQrhS7c2GXiwBkbeqDX+fj\nq6DsJfPuTouJCbngSp0PUWOdBbMbXxOHSNfXrvcDWRVSb31eJbckz0OJr/YcB8mk\nl49TgM3dAEvmBC/cQTTQoJu6lmjRJK52RNU0op+3L+/Wz9jmrE27jBe+Ml/3Sh1E\nCI3NrXb4b1/DoiyqrHRuBjdS2+MAFrIm8rceBZaeiLVIZr+Oz8VONWIYxF08vgxp\n9hG6/rjrAgMBAAECgf8SrzzBd5gZS+z3GLzvFHjOBTHw0QR1rGCB0kZWHjZSI42E\nffYb5C5QyoQBbolXUayNoCWuHee8VO/8D/9n/DdmuMMKNKfancDGH+qDz5nJfIjg\ndKoDvHLyuwBPABjBtOsDdmZH+AqhPBCsT1B+aJU/VomJ+nlmNRinmT+FBev0RnUa\nbN2JVYXBEJp7AI6P7KgoqqcG1FT/qGEaqbdsM0IP2I6AXw2RLYleBDb7U4Pu1/uf\n0hbMz1UvZUB7D0JOM0sQroiRntvVqlML0rm1zOfKLCbUKyCLQb2MmbmoR1XF+Zho\nDxdI47CjX6E/Y63HdEv0tm1sZXQtDdQah5ZL7qkCgYEA2yG0+sp69V9SG063EYiP\nAwAjNTrhPMb044/EzuEYETshXSESD8u3yCqdaQI4dWB94Mzc+2d42zdVSaR2CuOo\njiKEW4bmkKHF07hUekChMV3xE9oL2KbaSyZXYyAQiYpNDaiJlTqnTdh1BNKJfUMh\n4ZSjZZHnuAedSthq1Qe1ZSkCgYEAucXSHwucXQj9k5thobZHj6iQjspddD3jZT6m\nDELJR9LyM7uGYv4GC+qXVHZnEGMJVpN9TsQy/JiL27tjiEqLZI4NnsPu6kxGrUto\nDx4Ic4oR8aXTORh06K9fsB6WkIvkjfebllJHHyRO34z5Jn1LbN5RT6/QttJZZviQ\nBeote/MCgYBhrXO7utf2WkgCLiNCaIm+/6eyCY3vBoyQhzxmL0YIIEBt/9jKO7ev\nPPevoDLEd3+E3iy+z8+6f76/tdR8ZCB1QwOWvNo3rDS/fFIDsJ1poQNeIvrW1wFF\nMFERuXBFruVL6k1xvJRpCcyXmrV4pZ0LrbLsCo6spJBDlZaBYQ9FiQKBgExnifXu\nxo6VBgXRYCQsXd49y8aOgEUwtveK/qwIQ9Rgc/DG7YyFQWNhRoAcemMI+Gw9GMpu\nczHkY5EpztPdJNtkeUGVAAwo9uCLJO8iwQMUBDFIrEjNQDf6+PXsfqxQfN3OupTm\nng221yGmT0p/Oag6/2IwwzyN4uswy7tDBxX1AoGAWqyvi2I24NSproIAz3qTz/N2\n7fp1WqlZ76isSXy4AX7MtOrqfbEYFWZTSHP1dd69OWwFkT5V80QnbzeSnXpmFDFP\ntlwLtXbJgK8zuuROHYL8D4AWrujwQpBrZQgPZyRhWHY8dEenjh7nzluKxqkJnYZV\nZFM7XLAoBFRLfJNXXzk=\n-----END PRIVATE KEY-----\n",
-    "client_email": "firebase-adminsdk-51f9h@accou-2f211.iam.gserviceaccount.com",
-    "client_id": "102887399081828542573",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-51f9h%40accou-2f211.iam.gserviceaccount.com",
-    "universe_domain": "googleapis.com"
+  "type": "service_account",
+  "project_id": "accou-2f211",
+  "private_key_id": "8c38ce5c0f04076c35cddcdc606be6713b431abf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC945emevEL9LRv\n48m/tXulN9bSekAc+wswc7atNy3ovpuCST/ECZ00cHG+HfF4UaI7tqpESc/nTqO7\nlGkbMBjN92fhOUxUw8jHjKcsUE0Te2H9GODmIxvKh/HOq+0e7si+o8NqLon974JV\n8BMygd7/pu1abTl+Bee94PnB8BWj94RyGrYR8Be2JoNxZb9ZSsrCN94yDIDhwYTL\n7kIVdvnDRl0FmCZMzZSIJpo77YbTuCg+/VrN5vwsTNDaUF7Pjr73NM+1IuUiNZmC\nxdIXffgETyilechY/vlkcFkrYHB0iXNktW5fk3JtxY07Y5cppozT8LwIJu4Hcd4y\nGBfOsRPhAgMBAAECggEAJYf6lRHXG0sYL8ZIva6329Gz0MGPcvrufPrd+BIALbCg\nyWlDZHKXAwKXhKFj9OlDpMRHlnw1Tq1FIOHmPVSuDmWQP1yFGPricAh9kT1k4o0g\nMrdsWihFyavBcB0cnqDJBh8VlGLS7OEeNHChRroTEpoSby1H7//oTCgPjVSv3kqJ\n0KjsJDJgeKxI6Tt8zU9jouHg/F2SYk1YOa/NNbLzyb+ugVVdy/fVKhkHtJ8vtpMS\nixN+SsSBDuH1mZh3/k60O5asVXWK9bj7GKNp5jjUi9vXBlIqfLvWEIZj6XZsCRN8\nyN+71P0nXfqYccUy3NFgzBf55Wym1A1KxMquxK8CfQKBgQD2HcyCQyEDYJBya03w\nFgPVJXzWt1to9ofGGZh6HpybLgLLYkbOXIbCrYItIS7SfgcfqWK6wo7W+rthgTU9\nQrcAb0XZjFIXoNArTGlqkHBTl94uEHNwCgmtquumHC4uaPdQCgZMCyuxslOT+UHc\nONY4JOCg2GwMLLVAJ+SQGEiSdQKBgQDFg79qd0+lkwzZAlSAlXbgdcWPjiC/JOzY\nVYQN3glw7zAbWVD5ri9yacPMrBeHfcz09NfPbULVfDbLpZvRjCgx+52EqSG+ypOE\ncZyC2QW2PI6RIaW4e+TK3D0Swa2AoYPhrupPvJLKW/qb+5anF81b7DhhFOPwy+Wl\nDJvC0Uu2PQKBgAqnbZPx/frcckRRutT6zv2qGsZct5tKmMQNlZkrvBHHox1UysXi\nIX9J7YmwlwtLo1lOhtSY2YAa6IOnCTv2qF9fccGiHmehcYF+VE3lpMcpmteZpLWj\n6ZlX/c16CNG/f306gd1G2oRduNp9/sjeuP9DMWolFEBOqyX01CMcuf+FAoGBAIiZ\nlm++dmIPskn/V4vaUu3n5atj43fuxLLVac/haOwnMEEp41vawMvDI/xQZLF7Kp2b\nHApECX32OztanMouwbnXx9fw1PrLxXxKyrCgAVhIx1zORXuyi8hUyxRGyIT2r2wM\n+dYNmAPF2yu3szh6uLdDRra1qPNnQLqGXs88yr0NAoGALmFe19Lst52ldxxqmTWa\ng5Vhaiwffwk7r/FKFJLY4g4nFzkGgjjtuutqqXQPSOMIEGp/nr4GBAeMjYBsk3Iv\nMzbmf1cQ8vq07FsD5ETUOvpo7pQHrsaWFdCyHlPO5vqGt2tfx4IWIfaBNItZOpoh\n/+BXk7vsTEZ2aJgYKH44nF8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-51f9h@accou-2f211.iam.gserviceaccount.com",
+  "client_id": "102887399081828542573",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-51f9h%40accou-2f211.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
 }
+
 
 cred = credentials.Certificate(firebase_config)
 firebase_app = firebase_admin.initialize_app(cred)

@@ -5,39 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Epic Account Emporium</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% if enable_captcha %}
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    {% endif %}
 </head>
-<body>
+<body class="{{ 'night-mode' if night_mode else '' }}">
     <div class="container">
-        <h1>Register</h1>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        <form method="POST" action="{{ url_for('register') }}">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm_password">Confirm Password:</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
-            </div>
-            <div class="h-captcha" data-sitekey="{{ hcaptcha_site_key }}"></div>
-            <button type="submit" class="btn">Register</button>
-        </form>
-        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+        <header>
+            <h1>Epic Account Emporium</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('services') }}">Services</a>
+                <a href="{{ url_for('login') }}" class="btn">Login</a>
+            </nav>
+        </header>
+
+        <main>
+            <h2>Register</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form method="POST" action="{{ url_for('register') }}">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+                {% if enable_captcha %}
+                <div class="h-captcha" data-sitekey="{{ hcaptcha_site_key }}"></div>
+                {% endif %}
+                <button type="submit" class="btn">Register</button>
+            </form>
+            <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+        </main>
     </div>
+
+    <div class="mode-switch">
+        <label class="switch">
+            <input type="checkbox" id="modeToggle" {% if night_mode %}checked{% endif %}>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
